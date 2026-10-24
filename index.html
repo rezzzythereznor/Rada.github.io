@@ -1,0 +1,31 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>File Downloader</title>
+</head>
+<body>
+    <h1>Downloading your file...</h1>
+    <p>Your download should start automatically.</p>
+    <button onclick="downloadFile()">Download Now</button>
+
+    <script>
+        // PASTE YOUR DROPBOX SHARE LINK HERE
+        const dropboxLink = "https://www.dropbox.com/scl/fi/usbf074x6qpvvw6gh4bnn/Web.zip?rlkey=iw0qu46s7kef1o78wssjdz0l8&st=4u3bffw5&dl=1";
+
+        function downloadFile() {
+            // Ask Dropbox to download the file directly
+            const downloadLink = dropboxLink.replace(/[?&]dl=0/, "")
+                .replace(/[?&]raw=1/, "");
+
+            const separator = downloadLink.includes("?") ? "&" : "?";
+            window.location.href = downloadLink + separator + "dl=1";
+        }
+
+        // Automatically start the download when the page opens
+        window.addEventListener("load", downloadFile);
+    </script>
+</body>
+</html>
